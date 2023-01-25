@@ -24,7 +24,10 @@ class RegisterType extends AbstractType
             ->add('firstname', TextType::class, [
                 'required' => true,
                 'invalid_message' => 'Enter valid First Name',
-                'constraints' => [new Length(2, 20)],
+                'constraints' => [new Length([
+                    'min' => 2,
+                    'max' => 20
+                ])],
                 'label' => 'First Name',
                 'attr' => [
                     'placeholder' => "Your First Name"
@@ -33,7 +36,10 @@ class RegisterType extends AbstractType
             ->add('lastname', TextType::class, [
                 'required' => true,
                 'invalid_message' => 'Enter valid Last Name',
-                'constraints' => [new Length(2, 20)],
+                'constraints' => [new Length([
+                    'min' => 2,
+                    'max' => 20
+                ])],
                 'label' => 'Last Name',
                 'attr' => [
                     'placeholder' => "Your Last Name"
@@ -52,7 +58,10 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'invalid_message' => 'Enter valid Phone Number',
                 'label' => 'Phone',
-                'constraints' => [new Length(10, 10), new Type(IntegerType::class)],
+                'constraints' => [new Length([
+                    'min' => 2,
+                    'max' => 20
+                ]), new Type(IntegerType::class)],
                 'attr' => [
                     'placeholder' => "Your Phone"
                 ]
@@ -60,7 +69,10 @@ class RegisterType extends AbstractType
             ->add('email', EmailType::class, [
                 'required' => true,
                 'label' => 'E-mail',
-                'constraints' => [new Length(2, 20)],
+                'constraints' => [new Length([
+                    'min' => 2,
+                    'max' => 20
+                ])],
                 'invalid_message' => 'Enter valid E-mail',
                 'attr' => ['placeholder' => "Your E-mail"]
                 ])
