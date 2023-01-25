@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate mb-5 text-center">
+          	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="{{path('app_home')}}">Home <i class="fa fa-chevron-right"></i></a></span> <span>My Account <i class="fa fa-chevron-right"></i></span></p>
+            <h2 class="mb-0 bread">My Account</h2>
+          </div>
+        </div>
+      </div>
+</section>
+ <section class="ftco-section container">
+
+    <div class="container">
+<div class="row gutters">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+<div class="card h-100">
+	<div class="card-body">
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mb-2 text-primary">Personal Details</h6>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="firstname">Firstname</label>
+					<input type="text" class="form-control" id="firstname" placeholder="Enter New FirstName" value="{{app.user.firstname}}">
+				</div>
+			</div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="lastname">Lastname</label>
+					<input type="text" class="form-control" id="Lastname" placeholder="Enter New LastName" value="{{app.user.lastname}}">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="phone">Phone</label>
+					<input type="text" class="form-control" id="phone" placeholder="Enter New Phone Number" value="{{app.user.phone}}">
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mt-3 mb-2 text-primary">Address</h6>
+			</div>
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="form-group">
+					<label for="fulladress">Full Adress</label>
+					<input type="text" class="form-control" id="fulladress" placeholder="Enter Full Adress" value="{{app.user.adress}}">
+				</div>
+			</div>
+		</div>
+        <div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mt-3 mb-2 text-primary">Password</h6>
+			</div>
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="form-group">
+					<label for="password">New Password</label>
+					<input type="password" class="form-control" id="password" placeholder="New password">
+				</div>
+			</div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="form-group">
+					<label for="repeatedpassword">Repeat Password</label>
+					<input type="password" class="form-control" id="repeatedpassword" placeholder="Repeat new password">
+				</div>
+			</div>
+		</div>
+        <div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mt-3 mb-2 text-primary">Fidelity Points</h6>
+			</div>
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="form-group">
+					<p style="font-weight:700">99999 points</p>
+					<button class="btn btn-primary">Use Points</button>
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="text-right">
+					<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+					<button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+ </section>
+{% endblock %}
