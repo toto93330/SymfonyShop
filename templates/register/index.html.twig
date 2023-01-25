@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate mb-5 text-center">
+          	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="{{path('app_home')}}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Register <i class="fa fa-chevron-right"></i></span></p>
+            <h2 class="mb-0 bread">Register</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section container">
+    {{ form_start(form) }}
+
+        {{ form_label(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+        
+        {{ form_label(form.lastname) }}
+        {{ form_widget(form.lastname) }}
+
+        {{ form_label(form.adress) }}
+        {{ form_widget(form.adress) }}
+        
+        {{ form_label(form.phone) }}
+        {{ form_widget(form.phone) }}
+
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+
+        {{ form_label(form.password) }}
+        {{ form_widget(form.password.first) }}
+        {{ form_label(form.password.second) }}
+        {{ form_widget(form.password.second) }}
+
+        <input type="submit" class="btn-primary btn mt-3" value="Register">
+
+    {{ form_end(form) }}
+	</section>
+            
+{% endblock %}
