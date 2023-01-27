@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\UserAddress;
+use App\Entity\UserFidelityPoints;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,9 +34,16 @@ class RegisterController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+           
            $password = $hash->hashPassword($user, $user->getPassword());
            $user->setPassword($password);
 
+           $fidelitypoints = new UserFidelityPoints();
+           $fidelitypoints->setPoints(0);
+           $fidelitypoints->setUser($user);
+
+
+           $this->em->persist($fidelitypoints);
            $this->em->persist($user);
            $this->em->flush();
 

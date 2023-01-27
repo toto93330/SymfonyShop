@@ -45,15 +45,6 @@ class RegisterType extends AbstractType
                     'placeholder' => "Your Last Name"
                 ]
                 ])
-            ->add('adress', TextType::class, [
-                'required' => true,
-                'invalid_message' => 'Enter valid Adress',
-                'constraints' => [new NotBlank()],
-                'label' => 'Adress',
-                'attr' => [
-                    'placeholder' => "Your Adress",
-                ]
-                ])
             ->add('phone', TelType::class, [
                 'required' => true,
                 'invalid_message' => 'Enter valid Phone Number',
