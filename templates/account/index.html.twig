@@ -21,43 +21,53 @@
 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
     <div class="card h-100">
         <div class="card-body">
+        {{form_start(formPersonalDetails)}}
             <div class="row gutters">
+            
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <h6 class="mb-2 text-primary">Personal Details</h6>
                 </div>
+                
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    
                     <div class="form-group">
                         <label for="firstname">Firstname</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="Enter New FirstName" value="{{app.user.firstname}}">
+                        {{ form_widget(formPersonalDetails.firstname) }}
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="lastname">Lastname</label>
-                        <input type="text" class="form-control" id="Lastname" placeholder="Enter New LastName" value="{{app.user.lastname}}">
+                        {{ form_widget(formPersonalDetails.lastname) }}
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Enter New Phone Number" value="{{app.user.phone}}">
+                        {{ form_widget(formPersonalDetails.phone) }}
                     </div>
                 </div>
             </div>
+            {{ form_errors(formPersonalDetails.phone) }}
+            {{ form_errors(formPersonalDetails.lastname) }}
+            {{ form_errors(formPersonalDetails.firstname) }}
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                        <input type="reset" id="submit" name="submit" class="btn btn-secondary" value="Reset">
+                        <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Update">
                     </div>
                 </div>
             </div>
+           
         </div>
+        {{form_end(formPersonalDetails)}}
     </div>
 </div>
 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
     <div class="card h-100">
         <div class="card-body">
+         {{form_start(formChangePassword)}}
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <h6 class="mb-2 text-primary">Password</h6>
@@ -65,24 +75,25 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="Password">Password</label>
-                        <input type="password" class="form-control" id="Password" placeholder="Enter New Password" >
+                        {{ form_widget(formChangePassword.password.first) }}
                     </div>
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="repeatpassword">Repeat Password</label>
-                        <input type="password" class="form-control" id="repeatpassword" placeholder="Enter New repeated Password">
+                        {{ form_widget(formChangePassword.password.second) }}
                     </div>
                 </div>
             </div>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                        <input type="reset" id="submit" name="submit" class="btn btn-secondary" value="Reset">
+                        <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Update">
                     </div>
                 </div>
             </div>
+             {{form_end(formChangePassword)}}
         </div>
     </div>
 </div>
@@ -95,8 +106,7 @@
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
-                        <p>999999 points</p>
-                        <small>100 points equal 1 euro</small>
+                        <p>{{userPoints}} points</p>
                     </div>
                 </div>
             </div>
@@ -110,85 +120,56 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <h6 class="mb-2 text-primary">List Address</h6>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 card h-100 my-3 pt-3 mx-1">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p>8 sentier de la carriere,<br> 93330 neuilly sur marne,<br>  France</p>
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Update</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Remove</button>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 card h-100 my-3 pt-3 mx-1">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p>8 sentier de la carriere,<br> 93330 neuilly sur marne,<br>  France</p>
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Update</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Remove</button>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 card h-100 my-3 pt-3 mx-1">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p>8 sentier de la carriere,<br> 93330 neuilly sur marne,<br>  France</p>
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Update</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Remove</button>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 card h-100 my-3 pt-3 mx-1">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p>8 sentier de la carriere,<br> 93330 neuilly sur marne,<br>  France</p>
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Update</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Remove</button>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 card h-100 my-3 pt-3 mx-1">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <p>8 sentier de la carriere,<br> 93330 neuilly sur marne,<br>  France</p>
-                    </div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
-                        <button type="button" id="submit" name="submit" class="btn btn-secondary">Update</button>
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Remove</button>
-                    </div>
-                </div>
+
+                {% for address in userAddress %}
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 card h-100 my-3 pt-3 mx-1">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <p>{{address.address}},<br> {{address.zipCode}} {{address.city}},<br> {{address.state}}</p>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
+                            <a href="{{path('app_account_remove_address', {id: address.id})}}"><button type="button" id="submit" name="submit" class="btn btn-primary">Remove</button></a>
+                        </div>
+                    </div>  
+                {% endfor %}
+                
+
+                
             </div>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <h6 class="mb-2 text-primary">Add Address</h6>
                 </div>
+                {{form_start(formAddAddress)}}
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                     <label for="adress">Address</label>
-                        <input type="text" class="form-control" id="adress" placeholder="Your adress">
+                        {{ form_widget(formAddAddress.Address) }}
                     </div>
                  </div>
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="state">State</label>
-                        <input type="text" class="form-control" id="adress" placeholder="Your State">
+                        {{ form_widget(formAddAddress.State) }}
                     </div>
                  </div>
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="repeatpassword">City</label>
-                        <input type="text" class="form-control" id="adress" placeholder="Your City">
+                        {{ form_widget(formAddAddress.City) }}
                     </div>
                  </div>
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="form-group">
                         <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="Your Zip Code">
+                        {{ form_widget(formAddAddress.ZipCode) }}
                     </div>
                  </div>
                     <div class="text-right">
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Add Adress</button>
+                        <input type="submit" id="submit" name="submit" class="btn btn-primary" value="Add Address">
                     </div>
                 </div>
+                {{form_end(formAddAddress)}}
             </div>
         </div>
     </div>

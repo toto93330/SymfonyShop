@@ -20,10 +20,15 @@
   </head>
   <body>
          {% for message in app.flashes('success') %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
             {{ message }}
         </div>
-    {% endfor %}
+        {% endfor %}
+        {% for message in app.flashes('errors') %}
+        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
   	<div class="wrap">
 			<div class="container">
 				<div class="row">

@@ -52,7 +52,7 @@ class RegisterType extends AbstractType
                 'constraints' => [new Length([
                     'min' => 2,
                     'max' => 20
-                ]), new Type(IntegerType::class)],
+                ])],
                 'attr' => [
                     'placeholder' => "Your Phone"
                 ]
