@@ -25,7 +25,7 @@
         </div>
         {% endfor %}
         {% for message in app.flashes('errors') %}
-        <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show fixed-bottom" role="alert">
             {{ message }}
         </div>
         {% endfor %}
@@ -48,7 +48,11 @@
 			    		</p>
 		        </div>
 		        <div class="reg">
-		        	<p class="mb-0"><a href="#" class="mr-2">Sign Up</a> <a href="#">Log In</a></p>
+            {% if app.user %}
+            <p class="mb-0"><a href="{{path('app_account')}}" class="mr-2">My Account</a></p> 
+            {% else %}
+              <p class="mb-0"><a href="{{path('app_register')}}" class="mr-2">Sign Up</a> <a href="{{path('app_login')}}">Log In</a></p> 
+            {% endif %}
 		        </div>
 					</div>
 				</div>

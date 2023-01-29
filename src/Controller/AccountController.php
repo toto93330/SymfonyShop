@@ -26,7 +26,7 @@ class AccountController extends AbstractController
     }
 
     #[Route('/account', name: 'app_account')]
-    public function index(Request $request, UserPasswordHasherInterface $hash, UserRepository $user, UserFidelityPointsRepository $userFidelityPointsRepository, UserAddressRepository $userAddressRepository): Response
+    public function index(Request $request, UserPasswordHasherInterface $hash, UserRepository $user, UserFidelityPointsRepository $userFidelityPointsRepository, UserAddressRepository $userAddressRepository, UserPasswordHasherInterface $hasher): Response
     {   
         $currentuser = $this->getUser();
 
@@ -43,8 +43,13 @@ class AccountController extends AbstractController
         //CHANGE PASSWORD
         $formChangePassword = $this->createForm(UpdatePasswordType::class);
         $formChangePassword->handleRequest($request);
+
         if($formChangePassword->isSubmitted() && $formChangePassword->isValid()){
+            $oldpassword = $formChangePassword->get('old_password')->getData();
             $user = $user->findOneBy(['email' => $currentuser->getEmail()]);
+
+            if($hasher->isPasswordValid($user, $oldpassword)){
+                
 
             $password = $formChangePassword->getViewData()->getPassword();
             $password = $hash->hashPassword($user, $password);
@@ -53,6 +58,10 @@ class AccountController extends AbstractController
             $this->em->persist($user);
             $this->em->flush();
             $this->addFlash('success', 'Password Is Updated');
+            }else{
+                $this->addFlash('errors', 'Actual password is invalid');
+            }
+            
         }
 
         //ADD ADDRESS
@@ -61,9 +70,19 @@ class AccountController extends AbstractController
         $formAddAddress->handleRequest($request);
 
         if($formAddAddress->isSubmitted() && $formAddAddress->isValid()){
-            $user = $user->findOneBy(['email' => $currentuser->getEmail()]);
+            
+            $userAddressmax = $userAddressRepository->findBy(['User' => $this->getUser()]);
 
+            //VERIF MAX 5 ADDRESS
+
+            if(count($userAddressmax) >= 5){
+                $this->addFlash('errors', 'You cannot add a new address because you are the maximum ( 5 address ) on your account');
+                return $this->redirectToRoute('app_account');
+            }
+
+            $user = $user->findOneBy(['email' => $currentuser->getEmail()]);
             $userAddress->setUser($user);
+            
 
             $this->em->persist($userAddress);
             $this->em->flush();
