@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Category;
 use App\Entity\User;
 use App\Entity\UserAddress;
 use App\Entity\UserFidelityPoints;
@@ -44,8 +45,11 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::section('Users', 'fas fa-list');
         yield MenuItem::linkToCrud('Users', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Users Address', 'fas fa-list', UserAddress::class);
         yield MenuItem::linkToCrud('Users Points', 'fas fa-list', UserFidelityPoints::class);
+        yield MenuItem::section('Products', 'fas fa-list');
+        yield MenuItem::linkToCrud('Category', 'fas fa-list', Category::class);
     }
 }
